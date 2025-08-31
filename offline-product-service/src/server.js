@@ -17,7 +17,7 @@ mongoose
 
 const createProduct = require("./services/product-crud")
 
-createProduct()
+//createProduct()
 
 
 async function startServer(){
