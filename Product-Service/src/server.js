@@ -5,10 +5,15 @@ app.use(express.json())
 const sequelize = require("./config/db")
 const routes = require("./routes/product-routes")
 const { connectRabbitMQ } = require("./utils/rabbitmq")
+const errorHandler = require("./middlewares/errorHandler")
 app.use("/",routes)
 const port = process.env.SERVER_PORT
 // sync DB (create tables if not exist)
 
+
+
+//
+app.use(errorHandler)
 async function startServer(){
   await sequelize.sync({ alter: true })
   console.log("✅ Database synced");
