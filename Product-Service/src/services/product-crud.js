@@ -6,6 +6,8 @@ const createProduct = async (req) => {
   try {
     const { name, price, description, status } = req;
 
+    console.log("log -- service --- 1");
+    
     // Validation
     if (!name || !price) {
       logger.warn("Validation error: missing name or price", { request: req });
@@ -18,9 +20,13 @@ const createProduct = async (req) => {
 
     // Create product
     const product = await Product.create({ name, price, description, status });
+    console.log("log -- service ---  2 ");
 
     logger.info("Product created successfully: %s", product.name);
     logger.debug("Full product data: %j", product);
+
+    console.log("log -- service --- 3 ");
+
 
     return product;
   } catch (error) {
